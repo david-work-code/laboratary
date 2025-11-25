@@ -1,0 +1,119 @@
+:root {
+    --bg-color: #050510;
+    --terminal-green: #33ff00;
+    --neon-blue: #00f3ff;
+    --neon-red: #ff0055;
+    --crt-scanline: rgba(18, 16, 16, 0.1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    color: white;
+}
+
+#game-container {
+    position: relative;
+    width: 600px;
+    height: 800px;
+    box-shadow: 0 0 20px var(--neon-blue);
+    border: 2px solid #333;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+/* CRT Effect Overlay */
+#game-container::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#score-board, #lives-board, #stage-board {
+    position: absolute;
+    top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 5;
+}
+
+#score-board { left: 20px; color: var(--terminal-green); }
+#lives-board { right: 20px; color: var(--neon-red); }
+#stage-board { left: 50%; transform: translateX(-50%); color: var(--neon-blue); }
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 20;
+    text-align: center;
+}
+
+.screen h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+    letter-spacing: 4px;
+}
+
+.screen p {
+    font-size: 24px;
+    animation: blink 1s infinite;
+}
+
+.controls-hint {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #888;
+}
+
+.hidden { display: none; }
+.active { display: flex; }
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

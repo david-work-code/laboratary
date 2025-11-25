@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Invader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-layer">
+            <div id="score-board">SCORE: <span id="score">0</span></div>
+            <div id="lives-board">LIVES: <span id="lives">3</span></div>
+            <div id="stage-board">STAGE: <span id="stage">1</span></div>
+            <div id="start-screen" class="screen active">
+                <h1>GALAXY INVADER</h1>
+                <p>PRESS SPACE TO START</p>
+                <div class="controls-hint">ARROWS to Move | SPACE to Shoot</div>
+            </div>
+            <div id="game-over-screen" class="screen hidden">
+                <h1>GAME OVER</h1>
+                <p>FINAL SCORE: <span id="final-score">0</span></p>
+                <p>PRESS SPACE TO RESTART</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load scripts in dependency order -->
+    <script src="src/InputHandler.js"></script>
+    <script src="src/Projectile.js"></script>
+    <script src="src/Particle.js"></script>
+    <script src="src/Background.js"></script>
+    <script src="src/Player.js"></script>
+    <script src="src/Enemy.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/main.js"></script>
+</body>
+
+</html>
